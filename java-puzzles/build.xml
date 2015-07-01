@@ -1,0 +1,31 @@
+<project name="javapuzzles" basedir=".">
+    <!--<property name="msbuild" value="C:/Windows/Microsoft.NET/Framework64/v4.0.30319/MSBuild.exe"/>-->
+
+    <property name="bin" value="${basedir}/bin"/>
+    <property name="src" value="${basedir}/src"/>
+    <property name="src_java" value="${src}/java"/>
+    <property name="src_c" value="${src}/c"/>
+    <property name="iq_p5" value="ro/bmocanu/javapuzzles/iq/p5"/>
+
+    <target name="prepare">
+        <delete dir="${bin}"/>
+        <mkdir dir="${bin}"/>
+    </target>
+
+    <target name="iq_p5_prepare" depends="prepare">
+        <mkdir dir="${bin}/p5"/>
+        <mkdir dir="${bin}/p5/java"/>
+        <mkdir dir="${bin}/p5/c"/>
+    </target>
+
+    <target name="iq_p5_build" depends="iq_p5_prepare">
+        <javac srcdir="${src_java}" destdir="${bin}/p5/java">
+            <include name="${iq_p5}/**"/>
+        </javac>
+        <javah class="ro.bmocanu.javapuzzles.iq.p5.Main" classpath="${bin}/p5/java" outputfile="${bin}/p5/c/Main.h"/>
+        <copy file="${src_c}/iq_p5/x64/Debug/IqP5.dll" todir="${bin}/p5/java"/>
+        <exec dir="${bin}/p5/java" executable="java">
+            <arg value="ro.bmocanu.javapuzzles.iq.p5.Main"/>
+        </exec>
+    </target>
+</project>
