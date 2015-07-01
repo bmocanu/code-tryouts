@@ -15,5 +15,3 @@ public class MyMathSucks {
 
 }
 ```
-
-PS: use any Java tricks and hacks you want, except for reflection.
