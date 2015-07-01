@@ -1,6 +1,6 @@
-<project name="base" basedir=".">
-    <property name="bin" value="${basedir}/bin"/>
-    <property name="src" value="${basedir}/src"/>
+<project name="base">
+    <property name="bin" value="bin"/>
+    <property name="src" value="src"/>
 
     <target name="clean">
         <delete dir="${bin}"/>

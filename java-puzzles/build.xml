@@ -1,6 +1,0 @@
-<project name="javapuzzles" basedir=".">
-    <property name="includes" value="${basedir}/build"/>
-
-    <import file="${includes}/ant_iq_p2.xml"/>
-    <import file="${includes}/ant_iq_p5.xml"/>
-</project>

@@ -1,0 +1,21 @@
+<project name="iq_p2" basedir=".">
+    <include file="ant_base.xml" as="base"/>
+
+    <target name="prepare" depends="base.prepare">
+        <mkdir dir="${basedir}/bin/iq_p2"/>
+    </target>
+
+    <target name="build" depends="prepare">
+        <javac srcdir="src" destdir="${basedir}/bin/iq_p2">
+            <include name="${src}/java/ro/bmocanu/javapuzzles/iq/p2/AgentImpl.java"/>
+            <include name="${src}/java/ro/bmocanu/javapuzzles/iq/p2/AgentBrilliantClassV1.java"/>
+            <include name="${src}/java/ro/bmocanu/javapuzzles/iq/p2/AgentBrilliantClassV2.java"/>
+        </javac>
+        <jar basedir="${basedir}/bin/iq_p2" destfile="${basedir}/bin/iq_p2/agent.jar">
+            <manifest>
+                <attribute name="Premain-Class" value="ro.bmocanu.javapuzzles.iq.p2.AgentImpl"/>
+                <attribute name="Can-Redefine-Classes" value="true"/>
+            </manifest>
+        </jar>
+    </target>
+</project>

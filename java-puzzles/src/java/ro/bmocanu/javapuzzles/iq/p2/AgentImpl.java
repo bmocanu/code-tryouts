@@ -9,14 +9,14 @@ import java.security.ProtectionDomain;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Probl2_Agent implements ClassFileTransformer {
+public class AgentImpl implements ClassFileTransformer {
     private static Instrumentation inst;
     private static Map<String, byte[]> classBytes = new HashMap<>();
 
     public static void premain(String agentArgs, Instrumentation inst) {
         System.out.println("Agent started!");
-        Probl2_Agent.inst = inst;
-        inst.addTransformer(new Probl2_Agent());
+        AgentImpl.inst = inst;
+        inst.addTransformer(new AgentImpl());
     }
 
     public static void switchClasses(String path, String class1, String class2) {
@@ -26,7 +26,7 @@ public class Probl2_Agent implements ClassFileTransformer {
             // the name appears twice
             switchClassNames(class1, class2, classDef);
             switchClassNames(class1, class2, classDef);
-            inst.redefineClasses(new ClassDefinition(BrilliantClassAgentV1.class, classDef));
+            inst.redefineClasses(new ClassDefinition(AgentBrilliantClassV1.class, classDef));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -40,6 +40,7 @@ public class Probl2_Agent implements ClassFileTransformer {
 
     @Override
     public byte[] transform(ClassLoader loader, String className, Class<?> classBeingRedefined, ProtectionDomain protectionDomain, byte[] classfileBuffer) throws IllegalClassFormatException {
+        System.out.println("Loading: " + className );
         classBytes.put(className, classfileBuffer);
         return classfileBuffer;
     }

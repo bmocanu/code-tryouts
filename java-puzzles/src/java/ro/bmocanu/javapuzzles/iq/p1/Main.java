@@ -7,7 +7,7 @@ import java.security.AccessControlException;
 
 public class Main {
 
-    public static void main1(String[] args) {
+    public static void main(String[] args) {
         class Out {
             void printf(String format, int value) {
                 System.out.print("99");

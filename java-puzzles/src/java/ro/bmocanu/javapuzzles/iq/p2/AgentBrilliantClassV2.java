@@ -1,6 +1,6 @@
 package ro.bmocanu.javapuzzles.iq.p2;
 
-public class BrilliantClassAgentV2 {
+public class AgentBrilliantClassV2 {
     private Object extremelyExpensiveValue;
 
     public Object getExtremelyExpensiveValue() {
