@@ -1,6 +1,4 @@
 <project name="javapuzzles" basedir=".">
-    <!--<property name="msbuild" value="C:/Windows/Microsoft.NET/Framework64/v4.0.30319/MSBuild.exe"/>-->
-
     <property name="bin" value="${basedir}/bin"/>
     <property name="src" value="${basedir}/src"/>
     <property name="src_java" value="${src}/java"/>
