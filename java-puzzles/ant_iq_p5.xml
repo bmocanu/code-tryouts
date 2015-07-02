@@ -16,10 +16,7 @@
         <javac srcdir="${src_java}" destdir="${bin}/iq_p5/java">
             <include name="${iq_p5}/**"/>
         </javac>
-        <javah class="ro.bmocanu.javapuzzles.iq.p5.Main" classpath="${bin}/iq_p5/java" outputfile="${bin}/iq_p5/c/Main.h"/>
-        <copy file="${src_c}/iq_p5/x64/Debug/IqP5.dll" todir="${bin}/iq_p5/java"/>
-        <exec dir="${bin}/iq_p5/java" executable="java">
-            <arg value="ro.bmocanu.javapuzzles.iq.p5.Main"/>
-        </exec>
+        <javah class="ro.bmocanu.javapuzzles.iq.p5.Main" classpath="${bin}/iq_p5/java"
+               outputfile="${bin}/iq_p5/c/Main.h"/>
     </target>
 </project>

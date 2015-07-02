@@ -22,10 +22,17 @@ public class AgentImpl implements ClassFileTransformer {
     public static void switchClasses(String path, String class1, String class2) {
         try {
             System.out.println("Switching bytecode of class " + class1 + " with " + class2);
-            byte[] classDef = classBytes.get(path + class2);
-            // the name appears twice
-            switchClassNames(class1, class2, classDef);
-            switchClassNames(class1, class2, classDef);
+            byte[] classDef = classBytes.get(path + "/" + class2);
+            try {
+                // the name appears twice... or thrice if it also contains the source symbols
+                // anyway, no loops allowed, so...
+                switchClassNames(class1, class2, classDef);
+                switchClassNames(class1, class2, classDef);
+                switchClassNames(class1, class2, classDef);
+                switchClassNames(class1, class2, classDef);
+            } catch (Exception e) {
+                // discard this exception
+            }
             inst.redefineClasses(new ClassDefinition(AgentBrilliantClassV1.class, classDef));
         } catch (Exception e) {
             e.printStackTrace();
@@ -40,7 +47,6 @@ public class AgentImpl implements ClassFileTransformer {
 
     @Override
     public byte[] transform(ClassLoader loader, String className, Class<?> classBeingRedefined, ProtectionDomain protectionDomain, byte[] classfileBuffer) throws IllegalClassFormatException {
-        System.out.println("Loading: " + className );
         classBytes.put(className, classfileBuffer);
         return classfileBuffer;
     }

@@ -7,7 +7,7 @@ public class AgentBrilliantClassV1 {
         System.out.println("Here we create the thing");
         extremelyExpensiveValue = "Loooooong string!";
         new AgentBrilliantClassV2();
-        AgentImpl.switchClasses("ro/bmocanu/javapuzzles/iq/p2/", "AgentBrilliantClassV1", "AgentBrilliantClassV2");
+        AgentImpl.switchClasses("ro/bmocanu/javapuzzles/iq/p2", "AgentBrilliantClassV1", "AgentBrilliantClassV2");
         return extremelyExpensiveValue;
     }
 }
