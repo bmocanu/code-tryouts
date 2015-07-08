@@ -11,4 +11,6 @@ More links about this subject (which I also used for crafting the solution):
 * http://blog.ioactive.com/2014/04/hacking-java-debug-wire-protocol-or-how.html
 
 As general info, to enable JDWP in any Java application (Eclipse and IDEA are doing this automatically, behind the stage):
+```
 java -Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=40000,suspend=n Main
+```
