@@ -1,46 +1,28 @@
-Greece received a new loan in order to get back on its tracks, meanwhile the ATM crisis remains.
-In order to receive the loan, they had to make some hard decisions like increasing taxes for example.
+Today we are teachers. We were asked to hold a lecture to a group of enthusiastic students.
+They learned last time about methods and now would be a good time to teach  them javadoc.
 
-They also found an issue in the ATM software, somehow there were some people who managed to get more the 60 euros per day.
-This is a simplified version of the new Greek ATM.
-
-```java
-public class SecureATM {
-  private static final int MAX_AMOUNT = 60; //Euros
-  private int current = 0;
-
-  public synchronized void withdraw(int amount) {
-    current += amount ;
-     if (current> MAX_AMOUNT) {
-      reset();
-    }
-  }
-
-  private void reset(){
-    current = MAX_AMOUNT;
-  }
-
-  public synchronized void checkIfHacked() {
-    if (current > MAX_AMOUNT) {
-      System.out.println("Someone is rich :P!");
-    }
-  }
-}
-```
+Since the best way to learn is through practice, we asked them to write the javadoc for this problem.
 
 ```java
-public class Person {
+public class IForgotHowToMath {
   public static void main(String[] args) {
-    SecureATM atm = new SecureATM();
-    atm.withdraw(100);
-    atm.checkIfHacked();
+    System.out.println(add(1, 1));
+  }
+ 
+  public static int add(int a, int b) {
+    return a + b;
   }
 }
 ```
 
-You need to find a way to withdraw more than 60 euros.
-It is considered that you withdrew more than 60 euros if  "Someone is rich :P" is printed on your SYS_OUT.
+While checking the problems, we found a student who said in java doc that the program prints 22.
+How can it print 22? Must be wrong.
+
+We run the program and surprise, it prints 22.
+We checked the code, he only added java doc. How is this possible?
+
+Your job is to recreate the student's solution that prints 22 by only adding javadoc.
 
 Rules:
-* Only the Person class should be edited, your hack should only live there. Editing the other classes will not count as a valid solution.
-* The solution is valid only if the message was printed by the SecureATM class in checkIfHacked method
+* Only the IForgotHowToMath should be edited.
+* Only java doc can be added.
