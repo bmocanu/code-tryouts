@@ -65,3 +65,8 @@ func Register(feedType string, matcher Matcher) {
 	log.Println("Register", feedType, "matcher")
 	matchers[feedType] = matcher
 }
+
+func init() {
+	log.Println("Init in search/search")
+}
+

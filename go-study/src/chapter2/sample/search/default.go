@@ -1,10 +1,15 @@
 package search
 
+import (
+	"log"
+)
+
 // defaultMatcher implements the default matcher.
 type defaultMatcher struct{}
 
 // init registers the default matcher with the program.
 func init() {
+	log.Println("Init in search/default")
 	var matcher defaultMatcher
 	Register("default", matcher)
 }

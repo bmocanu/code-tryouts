@@ -2,6 +2,7 @@ package search
 
 import (
 	"encoding/json"
+	"log"
 	"os"
 )
 
@@ -12,6 +13,10 @@ type Feed struct {
 	Name string `json:"site"`
 	URI  string `json:"link"`
 	Type string `json:"type"`
+}
+
+func init() {
+	log.Println("Init in search/feed")
 }
 
 // RetrieveFeeds reads and unmarshals the feed data file.

@@ -41,3 +41,7 @@ func Display(results chan *Result) {
 		log.Printf("%s:\n%s\n\n", result.Field, result.Content)
 	}
 }
+
+func init() {
+	log.Println("Init in search/match")
+}

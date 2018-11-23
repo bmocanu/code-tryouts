@@ -62,6 +62,7 @@ type rssMatcher struct{}
 
 // init registers the matcher with the program.
 func init() {
+	log.Println("Init in matchers/rss")
 	var matcher rssMatcher
 	search.Register("rss", matcher)
 }
