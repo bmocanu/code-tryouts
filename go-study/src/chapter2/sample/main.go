@@ -5,7 +5,7 @@ import (
 	"os"
 
 	_ "chapter2/sample/matchers"
-	"chapter2/sample/search"
+	search "chapter2/sample/search"
 )
 
 // init is called prior to main.

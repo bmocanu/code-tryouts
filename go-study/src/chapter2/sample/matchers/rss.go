@@ -1,4 +1,4 @@
-package matchers
+package roox
 
 import (
 	"encoding/xml"
@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"regexp"
 
-	"chapter2/sample/search"
+	search "chapter2/sample/search"
 )
 
 type (
