@@ -5,35 +5,54 @@ import (
 	"io/ioutil"
 )
 
+var indexArr []int
+
 func react(content []byte, byteToExclude byte) int {
 	var contentLen = len(content)
-	var indexLen = 0
-	var indexArr = make([]int, contentLen)
+	var finalLen = 0
+	if indexArr == nil {
+		indexArr = make([]int, contentLen)
+	}
 
-	for contentIndex := 0; contentIndex < contentLen; contentIndex++ {
-		if content[contentIndex] != byteToExclude && content[contentIndex] != byteToExclude+32 {
-			indexArr[indexLen] = contentIndex
-			indexLen++
+	for contentPos := 0; contentPos < contentLen; contentPos++ {
+		if content[contentPos] == byteToExclude || content[contentPos] == byteToExclude+32 {
+			indexArr[contentPos] = -1
+		} else {
+			indexArr[contentPos] = contentPos
+			finalLen++
 		}
 	}
 
-	var recentReaction = true
-	for recentReaction {
-		recentReaction = false
-		for index := 0; index < indexLen-1; index++ {
-			var diff = (int8)(content[indexArr[index]] - content[indexArr[index+1]])
-			if diff == 32 || diff == -32 {
-				recentReaction = true;
-				for subIndex := index; subIndex < indexLen-2; subIndex++ {
-					indexArr[subIndex] = indexArr[subIndex+2]
+	var recentReduction = true
+	var loops = 0
+	for recentReduction {
+		recentReduction = false
+		loops++
+		for arrPos := 0; arrPos < contentLen-1; arrPos++ {
+			if indexArr[arrPos] >= 0 {
+				var nextPos = arrPos + 1
+				for nextPos = arrPos + 1; nextPos < contentLen && indexArr[nextPos] < 0; nextPos++ {}
+
+				if nextPos < contentLen {
+					var diff = (int8)(content[indexArr[arrPos]] - content[indexArr[nextPos]])
+					if diff == 32 || diff == -32 {
+						recentReduction = true;
+						indexArr[arrPos] = -1
+						indexArr[nextPos] = -1
+						finalLen = finalLen - 2
+						arrPos = arrPos - 2
+						if arrPos < 0 {
+							arrPos = -1
+						}
+					}
 				}
-				indexLen = indexLen - 2
-				index = index - 1
 			}
 		}
 	}
 
-	return indexLen
+	fmt.Println("Loops: ", loops)
+
+	return finalLen
 }
 
 func main() {
@@ -43,11 +62,11 @@ func main() {
 		return
 	}
 
-	fmt.Println("Part 1: ", react(content, 0))
+	fmt.Println("Part 1: ", react(content[0:], 0))
 	// fmt.Println("Part 1: ", react(content, 'A'))
 
-	var index byte
-	for index = 'A'; index < 'Z'; index++ {
-		fmt.Println("Part 2: ", react(content, index))
-	}
+	//var index byte
+	//for index = 'A'; index < 'Z'; index++ {
+	//	fmt.Println("Part 2: ", react(content[0:], index))
+	//}
 }
