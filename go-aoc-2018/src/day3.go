@@ -10,7 +10,7 @@ var coveredInches int
 var isolatedMat = make(map[int]bool)
 var fabricMat [1000][1000]int
 
-func handleStringLines(line string) {
+func handleStringLineForDay3(line string) {
 	var posComAlt = strings.Index(line, "@")
 	var posComma = strings.Index(line, ",")
 	var posColon = strings.Index(line, ":")
@@ -44,8 +44,8 @@ func handleStringLines(line string) {
 	}
 }
 
-func main() {
-	err := StreamFileAsStringLines("day3_input.txt", handleStringLines);
+func main_day3() {
+	err := StreamFileAsStringLines("day3_input.txt", handleStringLineForDay3);
 	if err != nil {
 		fmt.Println("Error reading day3_input file", err)
 	}
