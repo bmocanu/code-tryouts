@@ -31,7 +31,9 @@ func react(content []byte, byteToExclude byte) int {
 		for arrPos := 0; arrPos < contentLen-1; arrPos++ {
 			if indexArr[arrPos] >= 0 {
 				var nextPos = arrPos + 1
-				for nextPos = arrPos + 1; nextPos < contentLen && indexArr[nextPos] < 0; nextPos++ {}
+				for nextPos < contentLen && indexArr[nextPos] < 0 {
+					nextPos++
+				}
 
 				if nextPos < contentLen {
 					var diff = (int8)(content[indexArr[arrPos]] - content[indexArr[nextPos]])
