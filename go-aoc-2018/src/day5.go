@@ -7,7 +7,7 @@ import (
 
 var indexArr []int
 
-func react(content []byte, byteToExclude byte) int {
+func day5React(content []byte, byteToExclude byte) int {
 	var contentLen = len(content)
 	var finalLen = 0
 	if indexArr == nil {
@@ -57,18 +57,18 @@ func react(content []byte, byteToExclude byte) int {
 	return finalLen
 }
 
-func main() {
+func main_day5() {
 	var content, err = ioutil.ReadFile("day5_input.txt")
 	if err != nil {
 		fmt.Println("Error reading input file", err)
 		return
 	}
 
-	fmt.Println("Part 1: ", react(content[0:], 0))
+	fmt.Println("Part 1: ", day5React(content[0:], 0))
 	// fmt.Println("Part 1: ", react(content, 'A'))
 
 	//var index byte
 	//for index = 'A'; index < 'Z'; index++ {
-	//	fmt.Println("Part 2: ", react(content[0:], index))
+	//	fmt.Println("Part 2: ", day5React(content[0:], index))
 	//}
 }
