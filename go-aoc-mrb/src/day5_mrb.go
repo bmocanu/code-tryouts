@@ -50,7 +50,7 @@ func main() {
 
 	var filter byte
 	var minLen = math.MaxInt32
-	for filter = 'A'; filter < 'Z'; filter++ {
+	for filter = 'A'; filter <= 'Z'; filter++ {
 		var thisLen = react(content[0:], filter)
 		if thisLen < minLen {
 			minLen = thisLen
