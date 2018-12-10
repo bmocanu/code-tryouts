@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"io"
+	"math"
 	"os"
 )
 
@@ -72,4 +73,44 @@ func StreamFileAsStringLines(fileName string, handler stringLineHandler) error {
 	}
 
 	return nil
+}
+
+func ScanString(content string, format string, a ...interface{}) {
+	_, err := fmt.Sscanf(content, format, a...)
+	if err != nil {
+		fmt.Println("Failed to parse string content: "+content, err)
+		return
+	}
+}
+
+func Max(v1 int, v2 int) int {
+	if v1 < v2 {
+		return v2
+	}
+	return v1
+}
+
+func Min(v1 int, v2 int) int {
+	if v1 < v2 {
+		return v1
+	}
+	return v2
+}
+
+func MaxValue(array []int) int {
+	var maxValue = math.MinInt32
+	for index := 0; index < len(array); index++ {
+		if array[index] > maxValue {
+			maxValue = array[index]
+		}
+	}
+
+	return maxValue
+}
+
+func Abs(value int) int {
+	if value < 0 {
+		return -value
+	}
+	return value
 }
