@@ -105,7 +105,7 @@ func countDistSum(x int, y int) int {
 	return sum
 }
 
-func main() {
+func main_day6() {
 	var inputStr = os.Args[1]
 	err := StreamFileAsStringLines(inputStr, handleStringLineForDay6);
 	if err != nil {
