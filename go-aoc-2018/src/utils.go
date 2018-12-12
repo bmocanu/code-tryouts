@@ -114,3 +114,11 @@ func Abs(value int) int {
 	}
 	return value
 }
+
+func RepeatString(str string, count int) string {
+	var result = ""
+	for index := 0; index < count; index++ {
+		result = result + str
+	}
+	return result
+}

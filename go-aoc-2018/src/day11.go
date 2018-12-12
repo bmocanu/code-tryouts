@@ -66,7 +66,6 @@ func day11part2() {
 	for yPos := 0; yPos < 300; yPos++ {
 		for xPos := 0; xPos < 300; xPos++ {
 			var minSize = Min(300-xPos, 300-yPos)
-			minSize = Min(minSize, 100)
 			for size := 1; size <= minSize; size++ {
 				var currentPower = day11part2Cache(xPos, yPos, size)
 				if currentPower > p2MaxPower {
@@ -101,7 +100,7 @@ func powerLevel(x int, y int) int {
 	return powerLevel - 5
 }
 
-func main() {
+func main_day11() {
 	gridSerialNumber, _ = strconv.Atoi(os.Args[1])
 	var p1X, p1Y = day11part1()
 	fmt.Println("Part 1: ", p1X, p1Y)
