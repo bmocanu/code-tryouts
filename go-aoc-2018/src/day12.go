@@ -75,6 +75,10 @@ func day12Part2() int64 {
 		}
 	}
 
+	fmt.Println("Sum=", sum)
+	fmt.Println("Pots=", pots)
+	fmt.Println("RepetitiveGen=", repetitiveGen)
+	fmt.Println("Offset=", offset)
 	return sum + int64(pots)*(50000000000-int64(repetitiveGen)+int64(offset))
 }
 
@@ -92,7 +96,7 @@ func newGen(currentState string) string {
 	return newState + ".."
 }
 
-func main() {
+func main_day12() {
 	var inputStr = os.Args[1]
 	err := StreamFileAsStringLines(inputStr, streamInputForDay12);
 	if err != nil {
