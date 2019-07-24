@@ -1,0 +1,12 @@
+<project name="base">
+    <property name="bin" value="bin"/>
+    <property name="src" value="src"/>
+
+    <target name="clean">
+        <delete dir="${bin}"/>
+    </target>
+
+    <target name="prepare" depends="clean">
+        <mkdir dir="${bin}"/>
+    </target>
+</project>

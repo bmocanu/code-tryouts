@@ -1,0 +1,62 @@
+https://www.codewars.com/kata/car-park-escape/train/javascript
+
+<html>
+<body>
+<script type="text/javascript">
+    function escape(carpark) {
+        var posX = 0, posY = 0;
+        var width = carpark[0].length;
+        var bottomLevel = carpark.length - 1;
+        var exitCell = carpark[0].length - 1;
+        root_loop:
+            for (var row = 0; row < carpark.length; row++) {
+                for (var col = 0; col < carpark[row].length; col++) {
+                    if (carpark[row][col] === 2) {
+                        posX = row;
+                        posY = col;
+                        break root_loop;
+                    }
+                }
+            }
+
+        console.log(posX + " " + posY)
+        var result = []
+
+        while (posX != bottomLevel || posY != exitCell) {
+            console.log(posX + " " + posY)
+            var steps;
+            // try left
+            steps = 0;
+            while (posY - steps >= 0 && carpark[posX][posY - steps] == 0) {
+                steps++;
+            }
+            if (posY - steps >= 0 && steps > 0) {
+                posY = posY - steps;
+                result.push("L" + steps);
+            } else {
+                // try right
+                steps = 0;
+                while (posY + steps < width && carpark[posX][posY + steps] == 0) {
+                    steps++;
+                }
+                if (posY + steps < width && steps > 0) {
+                    posY = posY + steps;
+                    result.push("R" + steps);
+                }
+            }
+            posX = posX - 1;
+            result.push("D1");
+        }
+
+        return result;
+    }
+
+    carpark = [[1, 0, 0, 0, 2],
+        [0, 0, 0, 0, 0]];
+
+    result = ["L4", "D1", "R4"];
+
+    alert(escape(carpark));
+</script>
+</body>
+</html>
