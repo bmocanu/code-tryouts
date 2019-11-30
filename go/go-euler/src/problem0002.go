@@ -12,7 +12,7 @@ By considering the terms in the Fibonacci sequence whose values do not exceed fo
 find the sum of the even-valued terms.
 */
 
-func main() {
+func main2() {
 	var sum = 10
 	var n3 = 2
 	var n6 = 8

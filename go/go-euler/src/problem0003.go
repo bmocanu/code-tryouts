@@ -16,6 +16,10 @@ What is the largest prime factor of the number 600851475143 ?
 	600851475143 / A / 6 = K
 */
 
+func DoSomt() {
+
+}
+
 func main() {
 	var target = 600851475143
 	for index := target / 6; index > 2; index-- {
