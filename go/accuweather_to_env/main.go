@@ -1,9 +1,9 @@
 package accuweather_to_env
 
 import (
-	_ "accuweather_client"
 	"errors"
 	"fmt"
+	accwc "github.com/bmocanu/code-tryouts/go/accuweather_client"
 	"os"
 	"strconv"
 )
@@ -31,11 +31,11 @@ func main() {
 		return
 	}
 
-	var awConfig AccuweatherConfig
+	var awConfig accwc.AccuweatherConfig
 	awConfig.ApiKey = apiKey
 	awConfig.LocationKey = locationKey
 
-	aw5DaysForecast, err := Get5DaysForecast(awConfig, metric)
+	aw5DaysForecast, err := accwc.Get5DaysForecast(awConfig, metric)
 	if err != nil {
 		fmt.Println("Error occurred while calling AccuWeather for the 5 days forecast", err)
 		return
