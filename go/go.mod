@@ -1,3 +1,3 @@
-module github.com/bmocanu/code-tryouts
+module github.com/bmocanu/code-tryouts/go
 
-go 1.12
+go 1.13

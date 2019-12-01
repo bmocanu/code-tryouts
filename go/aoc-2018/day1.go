@@ -1,12 +1,13 @@
-package main
+package aoc_2018
 
 import (
 	"fmt"
+	"github.com/bmocanu/code-tryouts/go/utilities"
 )
 
 func main_day1() {
 	var numbers [1000]int
-	var numbersLen, err = ReadFileToIntArray("day1_input.txt", numbers[0:])
+	var numbersLen, err = utilities.ReadFileToIntArray("day1_input.txt", numbers[0:])
 	if err != nil {
 		panic(fmt.Sprintf("Cannot read file: %v", err))
 		return

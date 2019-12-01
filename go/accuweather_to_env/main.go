@@ -1,4 +1,4 @@
-package main
+package accuweather_to_env
 
 import (
 	_ "accuweather_client"
