@@ -2,6 +2,7 @@ package aoc_2018
 
 import (
 	"fmt"
+	"github.com/bmocanu/code-tryouts/go/utilities"
 	"os"
 	"strings"
 )
@@ -98,7 +99,7 @@ func newGen(currentState string) string {
 
 func main_day12() {
 	var inputStr = os.Args[1]
-	err := StreamFileAsStringLines(inputStr, streamInputForDay12);
+	err := utilities.StreamFileAsStringLines(inputStr, streamInputForDay12);
 	if err != nil {
 		fmt.Println("Error reading input file: "+inputStr, err)
 	}

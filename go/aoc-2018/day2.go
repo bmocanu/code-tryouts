@@ -2,11 +2,12 @@ package aoc_2018
 
 import (
 	"fmt"
+	"github.com/bmocanu/code-tryouts/go/utilities"
 )
 
 func main_day2() {
 	var lines [300]string
-	var linesLen, err = ReadFileToStringArray("day2_input.txt", lines[0:])
+	var linesLen, err = utilities.ReadFileToStringArray("day2_input.txt", lines[0:])
 	if err != nil {
 		panic(fmt.Sprintf("Cannot read file: %v", err))
 		return

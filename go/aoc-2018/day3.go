@@ -2,6 +2,7 @@ package aoc_2018
 
 import (
 	"fmt"
+	"github.com/bmocanu/code-tryouts/go/utilities"
 	"strconv"
 	"strings"
 )
@@ -45,7 +46,7 @@ func handleStringLineForDay3(line string) {
 }
 
 func main_day3() {
-	err := StreamFileAsStringLines("day3_input.txt", handleStringLineForDay3);
+	err := utilities.StreamFileAsStringLines("day3_input.txt", handleStringLineForDay3);
 	if err != nil {
 		fmt.Println("Error reading day3_input file", err)
 	}

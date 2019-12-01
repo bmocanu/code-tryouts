@@ -2,6 +2,7 @@ package aoc_2018
 
 import (
 	"fmt"
+	"github.com/bmocanu/code-tryouts/go/utilities"
 	"math"
 	"os"
 )
@@ -18,14 +19,14 @@ var fieldSizes []int
 
 func handleStringLineForDay6(line string) {
 	var x, y int
-	ScanString(line, "%d, %d\n", &x, &y)
+	utilities.ScanString(line, "%d, %d\n", &x, &y)
 
 	coords[coordsLen][X] = x
 	coords[coordsLen][Y] = y
 	coordsLen++
 
-	maxX = Max(x, maxX)
-	maxY = Max(y, maxY)
+	maxX = utilities.Max(x, maxX)
+	maxY = utilities.Max(y, maxY)
 }
 
 func day6part1() int {
@@ -47,7 +48,7 @@ func day6part1() int {
 		}
 	}
 
-	return MaxValue(fieldSizes[0:])
+	return utilities.MaxValue(fieldSizes[0:])
 }
 
 func day6part2() int {
@@ -68,7 +69,7 @@ func day6part2() int {
 }
 
 func taxicabDistance(x1 int, y1 int, x2 int, y2 int) int {
-	return Abs(x1-x2) + Abs(y1-y2)
+	return utilities.Abs(x1-x2) + utilities.Abs(y1-y2)
 }
 
 // Counts the coordinate that is closest to the given x and y and returns the index of that coordinate, or -1 if there
@@ -107,7 +108,7 @@ func countDistSum(x int, y int) int {
 
 func main_day6() {
 	var inputStr = os.Args[1]
-	err := StreamFileAsStringLines(inputStr, handleStringLineForDay6);
+	err := utilities.StreamFileAsStringLines(inputStr, handleStringLineForDay6);
 	if err != nil {
 		fmt.Println("Error reading input file: "+inputStr, err)
 	}

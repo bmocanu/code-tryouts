@@ -2,6 +2,7 @@ package aoc_2018
 
 import (
 	"fmt"
+	"github.com/bmocanu/code-tryouts/go/utilities"
 	"math"
 	"os"
 	"strconv"
@@ -65,7 +66,7 @@ func day11part2Cache(topX int, topY int, size int) int {
 func day11part2() {
 	for yPos := 0; yPos < 300; yPos++ {
 		for xPos := 0; xPos < 300; xPos++ {
-			var minSize = Min(300-xPos, 300-yPos)
+			var minSize = utilities.Min(300-xPos, 300-yPos)
 			for size := 1; size <= minSize; size++ {
 				var currentPower = day11part2Cache(xPos, yPos, size)
 				if currentPower > p2MaxPower {

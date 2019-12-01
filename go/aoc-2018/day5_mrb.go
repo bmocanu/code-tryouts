@@ -39,7 +39,7 @@ func react(content []byte, filter byte) int {
 	return resultPos + 1
 }
 
-func main() {
+func main_day5mrb() {
 	var content, err = ioutil.ReadFile("day5_input.txt")
 	if err != nil {
 		fmt.Println("Error reading input file", err)
