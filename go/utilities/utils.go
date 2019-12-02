@@ -4,8 +4,11 @@ import (
 	"bufio"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"math"
 	"os"
+	"strconv"
+	"strings"
 )
 
 func ReadFileToIntArray(fileName string, array []int) (int, error) {
@@ -31,6 +34,14 @@ func ReadFileToIntArray(fileName string, array []int) (int, error) {
 	}
 }
 
+func ReadFileToString(fileName string) (string, error) {
+	var fileContent, err = ioutil.ReadFile(fileName)
+	if err != nil {
+		return "", err
+	}
+	return string(fileContent), nil
+}
+
 func ReadFileToStringArray(fileName string, array []string) (int, error) {
 	fileDesc, err := os.Open(fileName)
 	if err != nil {
@@ -51,6 +62,19 @@ func ReadFileToStringArray(fileName string, array []string) (int, error) {
 	}
 
 	return linesLen, nil
+}
+
+func SplitCsvStringToIntArray(csvString string, targetArray []int) int {
+	var stringSplits = strings.Split(csvString, ",")
+	for stringSplitsIndex := range stringSplits {
+		var parsedInt, err = strconv.ParseInt(stringSplits[stringSplitsIndex], 10, 0)
+		if err != nil {
+			fmt.Printf("Failed to parse string to int: [%s]", stringSplits[stringSplitsIndex])
+		} else {
+			targetArray[stringSplitsIndex] = int(parsedInt)
+		}
+	}
+	return len(stringSplits)
 }
 
 type stringLineHandler func(string)
