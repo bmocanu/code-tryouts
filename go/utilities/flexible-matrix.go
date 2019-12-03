@@ -34,6 +34,10 @@ func (matrix *FlexibleIntMatrix) Get(x int, y int) int {
 	return 0
 }
 
+func (matrix *FlexibleIntMatrix) Size() int {
+	return matrix.cellCount
+}
+
 func (matrix *FlexibleIntMatrix) getCell(x int, y int) *Cell {
 	var cell, cellFound = matrix.cellMap[CantorPairingValue(x, y)]
 	if cellFound {
