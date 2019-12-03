@@ -146,3 +146,29 @@ func RepeatString(str string, count int) string {
 	}
 	return result
 }
+
+func TaxicabDistance(x1 int, y1 int, x2 int, y2 int) int {
+	return Abs(x1-x2) + Abs(y1-y2)
+}
+
+func CantorPairingValue(a1 int, a2 int) int {
+	return (a1+a2)*(a1+a2+1)/2 + a2
+}
+
+func GetDirDeltaByStringUDLR(command string) (int, int) {
+	var dirX = 0
+	var dirY = 0
+	switch command {
+	case "L":
+		dirX = -1
+	case "R":
+		dirX = 1
+	case "U":
+		dirY = -1
+	case "D":
+		dirY = 1
+	default:
+		fmt.Printf("Error: invalid command for delta direction [%s]", command)
+	}
+	return dirX, dirY
+}
